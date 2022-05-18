@@ -1,0 +1,19 @@
+.cartcheckout {
+
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__submit {
+    background-color: $colorPrincipal;
+    color: white;
+    border: none;
+    padding: 13px;
+    padding-top: 15px;
+    margin: 0 40%;
+  }
+
+}

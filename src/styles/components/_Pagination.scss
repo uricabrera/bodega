@@ -1,0 +1,35 @@
+
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  & svg {
+    color: #FC8A17;
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  &__content {
+    font-size: 20px;
+
+    &__item {
+      padding: 0px 10px;
+      cursor: pointer;
+    }
+
+    &__selecteditem {
+      color: #FC8A17;
+    }
+  }
+}
+
+
+
+
+@media screen and (max-width: 770px) {
+  .pagination__content {
+    display: none;
+  }
+}

@@ -1,0 +1,12 @@
+.container-cart-utility:last-of-type {
+  border-right: 1px solid $colorPrincipal;
+  border-left: none;
+}
+
+.container-cart-utility-border {
+  border-right: none;
+}
+
+.container-cart-utility-bordertest {
+  border-left: none !important;
+}

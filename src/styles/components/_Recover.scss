@@ -1,0 +1,126 @@
+.recover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+
+  &_image{
+    margin-top: 50px;
+  }
+
+  &_title{
+    font-weight: 400;
+    color: #000;
+    font-size: 1.2rem;
+    margin: 30px 0px 0px 0px;
+  }
+
+  &_form{
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+
+    &_placeholder{
+      opacity: 0.5;
+      display: flex;
+      transform: translateY(35px) translateX(10px);
+      pointer-events: none;
+      transition: all 0.5s;
+
+      &.recover_form_placeholder_password svg {
+        align-self: flex-end;
+      }
+
+      & label{
+        padding-left: 5px;
+      }
+
+      & svg{
+        transform: scale(1.2);
+      }
+    }
+
+
+    &_input{
+      margin-top: 5px;
+      padding: 10px;
+
+
+    }
+
+
+    &_link{
+      font-size: 10px;
+      font-weight: 400;
+
+      margin: 5px 2px 5px 2px;
+      & a{
+        color: inherit;
+        text-decoration: underline;
+        margin-left: 5px;
+        &:hover{
+          font-weight: bold;
+          font-weight: 600;
+        }
+      }
+    }
+
+    &_submit{
+      margin: 10px 0px;
+      padding: 10px;
+      background-color: #FC8A17;
+      border: none;
+      opacity: 0.9;
+      font-size: 20px;
+      cursor: pointer;
+      font-weight: 400;
+
+      &:hover{
+        font-weight: 600;
+      }
+    }
+  }
+
+  &_dashboard{
+    position: absolute;
+    right: 5%;
+    top: 90vh;
+  }
+}
+
+
+// Adding dynamic event
+
+.recover_form_placeholder_active {
+  transform: translateY(35px) translateX(-75px) !important;
+  transition: all 0.5s !important;
+}
+
+.recover_form_placeholder_active_password {
+  transform: translateY(35px) translateX(-120px) !important;
+  transition: all 0.5s !important;
+}
+
+@media screen and (max-width: 650px){
+  .recover {
+    &_form {
+      &_input {
+        margin: 10px 0px;
+      }
+      &_placeholder {
+        transform: translateY(40px) translateX(10px);
+      }
+    }
+  }
+
+  .recover_form_placeholder_active {
+    transform: translateY(10px) translateX(10px) !important;
+    transition: all 0.5s !important;
+  }
+
+  .recover_form_placeholder_active_password {
+    transform: translateY(10px) translateX(10px) !important;
+    transition: all 0.5s !important;
+  }
+
+}
