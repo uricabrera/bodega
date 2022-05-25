@@ -2,7 +2,7 @@ export const products = [
     {
         nombreComercial: "TRAVELGUM",
         laboratorio: "Microsules Argentina",
-        monodroga: "Tamsulosina 0,4mg 30 capsulas",
+        proveedor: "Tamsulosina 0,4mg 30 capsulas",
         stock: 1,
         price: "40%",
         priceDiscount: "70%",
@@ -15,7 +15,7 @@ export const products = [
     {
         nombreComercial: "MICRO-CAPE 75",
         laboratorio: "Microsules Argentina",
-        monodroga: "Clopidogrel 75 mg",
+        proveedor: "Clopidogrel 75 mg",
         stock: 1,
         price: "40%",
         priceDiscount: "70%",
@@ -28,7 +28,7 @@ export const products = [
     {
         nombreComercial: "TURBULINA",
         laboratorio: "Microsules Argentina",
-        monodroga: "Rosuvastatina 10 mg",
+        proveedor: "Rosuvastatina 10 mg",
         stock: 0,
         price: "40%",
         priceDiscount: "70%",
@@ -41,7 +41,7 @@ export const products = [
     {
         nombreComercial: "IBUPROFENO FORTE",
         laboratorio: "Klonal",
-        monodroga: "Ibuprofeno 4% (Suspensión 90 ml)",
+        proveedor: "Ibuprofeno 4% (Suspensión 90 ml)",
         stock: -1,
         price: "35%",
         priceDiscount: "65%",
@@ -54,7 +54,7 @@ export const products = [
     {
         nombreComercial: "SALBUDEM",
         laboratorio: "Denver Farma",
-        monodroga: "Pantoprazol 20 mg (30 comprimidos)",
+        proveedor: "Pantoprazol 20 mg (30 comprimidos)",
         stock: 0,
         price: "40%",
         priceDiscount: "70%",
@@ -67,7 +67,7 @@ export const products = [
     {
         nombreComercial: "SULFADINA DE PLATA DF",
         laboratorio: "Denver Farma",
-        monodroga: "Prednisolona 1.0% Fenilefrina 0.12% (10 ml)",
+        proveedor: "Prednisolona 1.0% Fenilefrina 0.12% (10 ml)",
         stock: -1,
         price: "40%",
         priceDiscount: "70%",

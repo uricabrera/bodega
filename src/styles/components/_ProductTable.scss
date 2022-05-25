@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  font-family: $font-stack-system;
+  /*font-family: 'IBM Plex Sans', sans-serif;*/
   color: rgba(0,0,0,.87);
 }
 
@@ -28,7 +28,7 @@ a {
 }
 
 .container {
-  margin: 5% 3%;
+  margin: 10px 3%;
 
   @media (min-width: $bp-bart) {
     margin: 2%;
@@ -74,12 +74,12 @@ a {
     }
 
     th {
-      background-color: $colorPrincipal;
+      background-color: $colorSecundario;
       border: 1px solid white;
       text-align: center;
       color: white;
       font-weight: 600;
-      font-size: 12px;
+      font-size: 0.9em;
       white-space: nowrap;
 
 
@@ -238,16 +238,16 @@ a {
 
 #responsive-table {
   &__cantidad {
-    width: 5%;
+    width: 10%;
   }
   &__nombreComercial{
-    width: 25%;
-  }
-  &__laboratorio {
     width: 15%;
   }
-  &__monodroga {
-    width: 33%;
+  &__laboratorio {
+    width: 25%;
+  }
+  &__proveedor {
+    width: 15%;
   }
   &__stock {
     width: 5%;

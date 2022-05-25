@@ -1,5 +1,4 @@
-import Logo from "./../media/logo.png";
-import {BiUser,BiKey} from "react-icons/bi";
+import Logo from "./../media/logo.jpg";
 import {Link,useHistory} from "react-router-dom";
 import {useState,useRef,useContext} from "react";
 import axios from "axios";
@@ -82,23 +81,27 @@ const Login = () => {
 
     return(
         <section className="login">
-            <img src={Logo} className="login_image" alt="Drogueria Del Sol"/>
-            <h1 className="login_title">Iniciar Sesión</h1>
-            <form className="login_form" onSubmit={onSubmit}>
-                <div className="login_form_placeholder" ref={emailRef} >
-                    <BiUser/>
-                    <label htmlFor="email">Email</label>
+            <div className="login_div1">
+                <img src={Logo} className="login_image" alt="logo"/>
+            </div>
+            <div className="login_div2">
+                <div className="login_div_form">
+                    <h1 className="login_title">Ingresar</h1>
+                    <form className="login_form" onSubmit={onSubmit}>
+                        <div className="login_form_placeholder" ref={emailRef} >
+                            <label htmlFor="email">Email</label>
+                        </div>
+                        <input type="email" autoComplete="off" className="login_form_input" name="email" id="email" onChange={(e) => onChange(e)}/>
+                        <div className="login_form_placeholder login_form_placeholder_password" ref={passwordRef}>
+                            <label htmlFor="password">Contraseña</label>
+                        </div>
+                        <input type="password" className="login_form_input" name="password" id="password" onChange={(e) => onChange(e) } autoComplete="off"/>
+                        <input type="submit" value="Iniciar Sesión" className="login_form_submit"/>
+                        <span className="login_form_link"><Link to="/recover">Olvidé mi contraseña</Link></span>
+                        <span className="login_form_link"><Link to="/registercode">Crear cuenta</Link></span>
+                    </form>
                 </div>
-                <input type="email" autoComplete="off" className="login_form_input" name="email" id="email" onChange={(e) => onChange(e)}/>
-                <div className="login_form_placeholder login_form_placeholder_password" ref={passwordRef}>
-                    <BiKey/>
-                    <label htmlFor="password">Contraseña</label>
-                </div>
-                <input type="password" className="login_form_input" name="password" id="password" onChange={(e) => onChange(e) } autoComplete="off"/>
-                <input type="submit" value="Iniciar Sesión" className="login_form_submit"/>
-                <span className="login_form_link">¿Olvidaste tu contraseña?<Link to="/recover">Hacé click acá</Link></span>
-                <span className="login_form_link">¿No tenés una cuenta?<Link to="/registercode">Registrate Ahora</Link></span>
-            </form>
+            </div >
         </section>
     )
 }

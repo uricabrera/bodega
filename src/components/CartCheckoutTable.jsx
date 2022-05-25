@@ -16,7 +16,7 @@ const CartCheckoutTable = () => {
                     <thead>
                     <tr>
                         <th scope="col" id="responsive-table__checkout__cantidad">Cantidad</th>
-                        <th scope="col" id="responsive-table__checkout__nombreComercial">Nombre Comercial</th>
+                        <th scope="col" id="responsive-table__checkout__nombreComercial">Cliente</th>
                     </tr>
                     </thead>
                     <tbody>

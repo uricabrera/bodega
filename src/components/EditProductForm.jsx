@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 import axios from "axios";
 
 
-const EditProductForm = ({nombreComercial,laboratorio,monodroga,coberturaPami,precio,image,id,descuentoLista,codigoInterno}) => {
+const EditProductForm = ({nombreComercial,laboratorio,proveedor,coberturaPami,precio,image,id,descuentoLista,codigoInterno}) => {
 
     let history = useHistory();
 
@@ -12,7 +12,7 @@ const EditProductForm = ({nombreComercial,laboratorio,monodroga,coberturaPami,pr
     const [inputSubmit, setInputSubmit] = useState({
         nombreComercial,
         laboratorio,
-        monodroga,
+        proveedor,
         precio,
         image,
         coberturaPami,
@@ -44,7 +44,7 @@ const EditProductForm = ({nombreComercial,laboratorio,monodroga,coberturaPami,pr
                 let respuesta1 = xmlhttp1.responseText;
                 console.log(respuesta1)
             }}
-        var cadenaParametros = 'nombreComercial='+encodeURIComponent(inputSubmit["nombreComercial"])+'&laboratorio='+encodeURIComponent(inputSubmit["laboratorio"])+'&monodroga='+encodeURIComponent(inputSubmit["monodroga"])
+        var cadenaParametros = 'nombreComercial='+encodeURIComponent(inputSubmit["nombreComercial"])+'&laboratorio='+encodeURIComponent(inputSubmit["laboratorio"])+'&proveedor='+encodeURIComponent(inputSubmit["proveedor"])
             +"&precio="+encodeURIComponent(inputSubmit["precio"])+"&coberturaPami="+encodeURIComponent(inputSubmit["coberturaPami"])+"&id="+encodeURIComponent(inputSubmit["id"])+"&image="+encodeURIComponent(inputSubmit["image"])+"&codigoInterno="+encodeURIComponent(inputSubmit["codigoInterno"])+"&descuentoLista="+encodeURIComponent(inputSubmit["descuentoLista"]);
         xmlhttp1.open('POST', '../../php/actualizar_item_imagen.php',true);
         xmlhttp1.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -58,7 +58,7 @@ const EditProductForm = ({nombreComercial,laboratorio,monodroga,coberturaPami,pr
         const formData = new FormData();
         formData.append("nombreComercial", inputSubmit["nombreComercial"]);
         formData.append("laboratorio", inputSubmit["laboratorio"]);
-        formData.append("monodroga", inputSubmit["monodroga"]);
+        formData.append("proveedor", inputSubmit["proveedor"]);
         formData.append("precio", inputSubmit["precio"]);
         formData.append("image", inputSubmit["image"]);
         formData.append("codigoInterno",inputSubmit["codigoInterno"]);
@@ -84,16 +84,16 @@ const EditProductForm = ({nombreComercial,laboratorio,monodroga,coberturaPami,pr
 
     return(
         <form className="editproductform">
-            <label htmlFor="nombreComercial" className="editproductform__label">Nombre Comercial</label>
+            <label htmlFor="nombreComercial" className="editproductform__label">Cliente</label>
             <input type="text" id={"nombreComercial"} value={inputSubmit["nombreComercial"]} name={"nombreComercial"} className="editproductform__text" onChange={onChange}/>
             <label htmlFor="codigoInterno" className="editproductform__label">Código Interno</label>
             <input type="text" id={"codigoInterno"} value={inputSubmit["codigoInterno"]} name={"codigoInterno"} className="editproductform__text" onChange={onChange}/>
             <label htmlFor="descuentoLista" className="editproductform__label">Descuento Lista</label>
             <input type="text" id={"descuentoLista"} value={inputSubmit["descuentoLista"]} name={"descuentoLista"} className="editproductform__text" onChange={onChange}/>
-            <label htmlFor="laboratorio" className="editproductform__label">Laboratorio</label>
+            <label htmlFor="laboratorio" className="editproductform__label">Producto</label>
             <input type="text" id={"laboratorio"} value={inputSubmit["laboratorio"]} name={"laboratorio"} className="editproductform__text" onChange={onChange}/>
-            <label htmlFor="monodroga" className="editproductform__label">Monodroga</label>
-            <input type="text" id={"monodroga"} value={inputSubmit["monodroga"]} name={"monodroga"} className={"editproductform__text"} onChange={onChange}/>
+            <label htmlFor="proveedor" className="editproductform__label">proveedor</label>
+            <input type="text" id={"proveedor"} value={inputSubmit["proveedor"]} name={"proveedor"} className={"editproductform__text"} onChange={onChange}/>
             <label htmlFor="pami" className="editproductform__label">Cobertura Pami</label>
             <div id={"coberturaPami"}>
                 <input type="radio" name="coberturaPami" id={"nopami"} value={0} defaultChecked={coberturaPami == "0" ? true : false}  className="editproductform__radio" onChange={onChange}/>

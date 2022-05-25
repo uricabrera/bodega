@@ -12,12 +12,12 @@ const SearchBar = ({onChange,onSubmit,onClick,input}) => {
                     <input className="searchbar_form_submit" value={"Buscar"} type="submit"/>
                 </div>
                 <div className="searchbar_form_advanced">
-                    <input type="radio" name="filter" value="monodroga" onChange={onChange} defaultChecked/>
-                    <label htmlFor="company">Monodroga</label>
-                    <input type="radio" name="filter" value="nombre comercial" onChange={onChange}/>
-                    <label htmlFor="name">Nombre Comercial</label>
+                    <input type="radio" name="filter" value="proveedor" onChange={onChange} defaultChecked/>
+                    <label htmlFor="company">proveedor</label>
+                    <input type="radio" name="filter" value="cliente" onChange={onChange}/>
+                    <label htmlFor="name">Cliente</label>
                     <input type="radio" name="filter" value="laboratorio" onChange={onChange}/>
-                    <label htmlFor="id">Laboratorio</label>
+                    <label htmlFor="id">Producto</label>
                 </div>
             </form>
         </div>

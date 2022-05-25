@@ -2,4 +2,32 @@
   height: 100vh;
   background-color: white;
 
+  &_div{
+   height: 100vh;
+   width: 100%;
+   overflow:hidden;
+   background-image: url(/media/etiqueta.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: absolute;
+   top: 0px;
+  }
+
+  &_text{
+    margin: 60vh 4% 0px 4%;
+    color: white;
+    width: 60%;
+  }
+
+  &_t{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 2em;
+    margin: 0px;
+  }
+
+  &_wines{
+    font-size: 2.6em;
+    margin: 10px;
+  }
+
 }

@@ -1,5 +1,4 @@
 .searchbar{
-  margin-top: 20px;
 
   &_form{
     display: flex;
@@ -7,9 +6,10 @@
 
     &_input{
       padding: 14px;
+      border-radius: 10px;
 
       border: solid 1px #686868;
-      font-size: 14px;
+      font-size: 0.9em;
 
       &:hover{
       }
@@ -46,6 +46,8 @@
       padding: 13px;
       padding-top: 15px;
       transform: translateY(2px);
+      border-radius: 10px;
+      margin-left: 5px;
     }
   }
 }

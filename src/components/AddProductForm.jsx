@@ -16,7 +16,7 @@ const AddProductForm = () => {
     const [inputSubmit, setInputSubmit] = useState({
         nombreComercial: "",
         laboratorio: "",
-        monodroga: "",
+        proveedor: "",
         precio: "",
         image: "",
         codigoInterno: "",
@@ -48,7 +48,7 @@ const AddProductForm = () => {
         // subirItem();
         formData.append("nombreComercial", inputSubmit["nombreComercial"]);
         formData.append("laboratorio", inputSubmit["laboratorio"]);
-        formData.append("monodroga", inputSubmit["monodroga"]);
+        formData.append("proveedor", inputSubmit["proveedor"]);
         formData.append("precio", inputSubmit["precio"]);
         formData.append("image", inputSubmit["image"]);
         formData.append("codigoInterno",inputSubmit["codigoInterno"]);
@@ -81,7 +81,7 @@ const AddProductForm = () => {
                 let respuesta1 = xmlhttp1.responseText;
                 console.log(respuesta1)
             }}
-        var cadenaParametros = 'nombreComercial='+encodeURIComponent(inputSubmit["nombreComercial"])+'&laboratorio='+encodeURIComponent(inputSubmit["laboratorio"])+'&monodroga='+encodeURIComponent(inputSubmit["monodroga"])
+        var cadenaParametros = 'nombreComercial='+encodeURIComponent(inputSubmit["nombreComercial"])+'&laboratorio='+encodeURIComponent(inputSubmit["laboratorio"])+'&proveedor='+encodeURIComponent(inputSubmit["proveedor"])
             +"&precio="+encodeURIComponent(inputSubmit["precio"])+"&coberturaPami="+encodeURIComponent(inputSubmit["coberturaPami"])+"&image="+encodeURIComponent(inputSubmit["image"])+"&descuentoLista="+encodeURIComponent(inputSubmit["descuentoLista"])+"&codigoInterno="+encodeURIComponent(inputSubmit["codigoInterno"]);
         xmlhttp1.open('POST', '../php/guardar_item_imagen.php',true);
         xmlhttp1.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -99,16 +99,16 @@ const AddProductForm = () => {
 
     return(
         <form className="addproductform" enctype="multipart/form-data">
-            <label htmlFor="nombreComercial" className="addproductform__label">Nombre Comercial</label>
+            <label htmlFor="nombreComercial" className="addproductform__label">Cliente</label>
             <input type="text" id={"nombreComercial"} name="nombreComercial" className="addproductform__text" onChange={onChange}/>
             <label htmlFor="codigoInterno" className="addproductform__label">Código Interno</label>
             <input type="text" id={"codigoInterno"} name="codigoInterno" className="addproductform__text" onChange={onChange}/>
             <label htmlFor="descuentoLista" className="addproductform__label">Descuento Lista</label>
             <input type="text" id={"descuentoLista"} name="descuentoLista" className="addproductform__text" onChange={onChange}/>
-            <label htmlFor="laboratorio" className="addproductform__label">Laboratorio</label>
+            <label htmlFor="laboratorio" className="addproductform__label">Producto</label>
             <input type="text" id={"laboratorio"} name="laboratorio" className="addproductform__text" onChange={onChange}/>
-            <label htmlFor="monodroga" className="addproductform__label">Monodroga</label>
-            <input type="text" id={"monodroga"} name="monodroga" className={"addproductform__text"} onChange={onChange}/>
+            <label htmlFor="proveedor" className="addproductform__label">proveedor</label>
+            <input type="text" id={"proveedor"} name="proveedor" className={"addproductform__text"} onChange={onChange}/>
             <label htmlFor="pami" className="addproductform__label">Cobertura Pami</label>
             <div id={"pami"}>
                     <input type="radio" name="coberturaPami" id={"nopami"} value={0} className="addproductform__radio" onChange={onChange}/>

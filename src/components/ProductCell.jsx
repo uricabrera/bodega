@@ -9,7 +9,7 @@ import {CartContext} from "../contexts/CartContext";
 import { Link } from "react-router-dom";
 import {UserContext} from "../contexts/UserContext";
 
-const ProductCell = ({nombreComercial,laboratorio,monodroga,stock,precio,priceDiscount,dto,precioConDescuento,image,coberturaPami,id,descuentoLista}) => {
+const ProductCell = ({nombreComercial,laboratorio,proveedor,stock,precio,priceDiscount,dto,precioConDescuento,image,coberturaPami,id,descuentoLista}) => {
 
     const [isHovering,setIsHovering] = useState(false);
 
@@ -52,7 +52,7 @@ const ProductCell = ({nombreComercial,laboratorio,monodroga,stock,precio,priceDi
         addProductToCart({
             nombreComercial,
             laboratorio,
-            monodroga,
+            proveedor,
             stock,
             precio,
             priceDiscount,
@@ -94,8 +94,8 @@ const ProductCell = ({nombreComercial,laboratorio,monodroga,stock,precio,priceDi
                         ) : ""
                     }
                 </th>
-                <td data-title="Laboratorio" className="product_laboratorio">{laboratorio}</td>
-                <td data-title="Monodroga" className="product_monodroga">{monodroga}</td>
+                <td data-title="Producto" className="product_laboratorio">{laboratorio}</td>
+                <td data-title="proveedor" className="product_proveedor">{proveedor}</td>
                 {/*
 
 

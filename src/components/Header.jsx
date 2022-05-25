@@ -1,5 +1,4 @@
-import Logo from "./../media/headerlogo.png";
-import {BiUserCircle,BiStore,BiCart,BiHome,BiX} from "react-icons/bi";
+import Logo from "./../media/logo.jpg";
 import {Link} from "react-router-dom";
 import {useEffect, useRef,useState,useContext} from "react";
 import {GiHamburgerMenu,GiCancel} from "react-icons/gi";
@@ -43,10 +42,10 @@ const Header = () => {
                 <nav>
                     <div>
                         <ul>
-                            <Link to="/dashboard" style={{color: 'inherit', textDecoration: 'inherit'}}><li><BiHome/>Inicio</li></Link>
-                            <Link to="/dashboard/store" style={{ color: 'inherit', textDecoration: 'inherit'}}><li><BiStore/>Productos</li></Link>
+                            <Link to="/dashboard" style={{color: 'inherit', textDecoration: 'inherit'}}><li>Inicio</li></Link>
+                            <Link to="/dashboard/store" style={{ color: 'inherit', textDecoration: 'inherit'}}><li>Órdenes</li></Link>
                             <CartWidget/>
-                            <li><BiUserCircle/>Cuenta</li>
+                            <li>Administración</li>
                             <span className="header_nav_mobile" onClick={() => setIsMobileNavbarOn(!isMobileNavbarOn)}>
                             {
                                 isMobileNavbarOn ? <GiCancel/> : <GiHamburgerMenu/>

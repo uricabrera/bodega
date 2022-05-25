@@ -1,8 +1,8 @@
 
 
 /*  Remember that there is this !important   */
-td[data-title="Laboratorio"],
-td[data-title="Monodroga"]{
+td[data-title="Producto"],
+td[data-title="proveedor"]{
   text-align: left !important;
 }
 
@@ -124,8 +124,8 @@ td[data-title="Precio Con Descuento"]{
   }
 
 
-  td[data-title="Laboratorio"],
-  td[data-title="Monodroga"]{
+  td[data-title="Producto"],
+  td[data-title="proveedor"]{
     text-align: end !important;
   }
 

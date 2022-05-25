@@ -14,7 +14,7 @@ const Store = () => {
 
     const [input,setInput] = useState({
         search: "",
-        filter: "monodroga"
+        filter: "proveedor"
     });
 
 

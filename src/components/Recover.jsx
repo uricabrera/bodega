@@ -1,5 +1,4 @@
-import Logo from "../media/logo.png";
-import {BiKey, BiUser} from "react-icons/bi";
+import Logo from "../media/logo.jpg";
 import {Link} from "react-router-dom";
 import {useRef, useState} from "react";
 import axios from "axios";
@@ -66,7 +65,6 @@ const Recover = () => {
             <h1 className="recover_title">Recuperar Cuenta</h1>
             <form className="recover_form" onSubmit={onSubmit}>
                 <div className="recover_form_placeholder" ref={emailRef} >
-                    <BiUser/>
                     <label htmlFor="email">Email</label>
                 </div>
                 <input type="email" autoComplete="off" className="recover_form_input" name="email" id="email" onChange={(e) => onChange(e)}/>

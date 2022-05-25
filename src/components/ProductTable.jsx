@@ -69,14 +69,13 @@ const ProductTable = ({input}) => {
                 <table className="responsive-table">
                     <thead>
                     <tr>
-                        <th scope="col" id="responsive-table__cantidad">Cantidad</th>
-                        <th scope="col" id="responsive-table__nombreComercial">Nombre Comercial</th>
-                        <th scope="col" id="responsive-table__laboratorio">Laboratorio</th>
-                        <th scope="col" id="responsive-table__monodroga">Monodroga</th>
+                        <th scope="col" id="responsive-table__cantidad">Nº de Órden</th>
+                        <th scope="col" id="responsive-table__nombreComercial">Cliente</th>
+                        <th scope="col" id="responsive-table__laboratorio">Detalle</th>
+                        <th scope="col" id="responsive-table__proveedor">Proveedor</th>
                         {/* <th scope="col" id="responsive-table__stock">Stock</th> */ }
-                        <th scope="col" id="responsive-table__suDescuento">Su Descuento</th>
-                        <th scope="col" id="responsive-table__precio">Precio</th>
-                        <th scope="col" id="responsive-table__precioConDescuento">Precio Con Desc.</th>
+                        <th scope="col" id="responsive-table__suDescuento">Estado</th>
+                        <th scope="col" id="responsive-table__precio">Fecha Estimada Entrega</th>
                     </tr>
                     </thead>
                     <tbody>

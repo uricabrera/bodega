@@ -1,3 +1,4 @@
+import Etiqueta from "./../media/etiqueta.jpg";
 import Header from "./Header";
 import {Switch,Route} from "react-router-dom";
 import Store from "./Store";
@@ -26,6 +27,12 @@ const Dashboard = () => {
                     <EditProduct/>
                 </Route>
             </Switch>
+            <div className="dashboard_div">
+                <div className="dashboard_text">
+                    <p className="dashboard_t">Soluciones de packaging para la industria de</p>
+                    <p className="dashboard_wines">WINES&amp;<span style={{fontWeight:"bold"}}>SPIRITS</span></p>
+                </div>
+            </div>
         </div>
     )
 }
