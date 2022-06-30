@@ -17,6 +17,9 @@ const CartCheckoutTable = () => {
                     <tr>
                         <th scope="col" id="responsive-table__checkout__cantidad">Cantidad</th>
                         <th scope="col" id="responsive-table__checkout__nombreComercial">Cliente</th>
+                        <th scope="col" id="responsive-table__checkout__nombreComercial">Descripción</th>
+                        <th scope="col" id="responsive-table__checkout__nombreComercial">Fecha De Entrega</th>
+                        <th scope="col" id="responsive-table__checkout__nombreComercial">Archivo De Diseño</th>
                     </tr>
                     </thead>
                     <tbody>

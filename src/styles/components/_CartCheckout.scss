@@ -7,6 +7,14 @@
     text-align: center;
   }
 
+  &__section {
+    padding-top: 20px;
+    position: relative;
+    z-index: 10;
+    background-color: white;
+    min-height: 100vh;
+  }
+
   &__submit {
     background-color: $colorPrincipal;
     color: white;
