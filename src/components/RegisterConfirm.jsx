@@ -1,4 +1,4 @@
-import Logo from "./../media/logo.png";
+import Logo from "./../media/logo.jpg";
 import {Link, useHistory} from "react-router-dom";
 import {useContext, useRef, useState} from "react";
 import {UserContext} from "../contexts/UserContext";

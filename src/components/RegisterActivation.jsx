@@ -1,4 +1,4 @@
-import Logo from "./../media/logo.png";
+import Logo from "./../media/logo.jpg";
 import {useHistory,useParams} from "react-router-dom";
 import {useEffect} from "react";
 import axios from "axios";

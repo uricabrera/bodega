@@ -45,7 +45,7 @@ const Header = () => {
                             <Link to="/dashboard" style={{color: 'inherit', textDecoration: 'inherit'}}><li>Inicio</li></Link>
                             <Link to="/dashboard/store" style={{ color: 'inherit', textDecoration: 'inherit'}}><li>Órdenes</li></Link>
                             <CartWidget/>
-                            <li>Administración</li>
+                            <Link to="/dashboard/admin" style={{ color: 'inherit', textDecoration: 'inherit'}}><li>Administración</li></Link>
                             <span className="header_nav_mobile" onClick={() => setIsMobileNavbarOn(!isMobileNavbarOn)}>
                             {
                                 isMobileNavbarOn ? <GiCancel/> : <GiHamburgerMenu/>

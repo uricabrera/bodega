@@ -1,4 +1,4 @@
-import Logo from "./../media/logo.png";
+import Logo from "./../media/logo.jpg";
 import {BiUser,BiKey} from "react-icons/bi";
 import {Link} from "react-router-dom";
 import {useState,useRef,useContext} from "react";
@@ -205,12 +205,12 @@ const Register = () => {
                 <input type="password" className="register_form_input" name="password" id="password" onChange={(e) => onChange(e) }/>
                 <div className="register_form_placeholder register_form_placeholder_password" ref={confirmPasswordRef}>
                     <BiKey/>
-                    <label htmlFor="confirmPassword">Confirmar contraseña</label>
+                    <label htmlFor="confirmPassword">Confirmar Contraseña</label>
                 </div>
                 <input type="password" className="register_form_input" name="confirmPassword" id="confirmPassword" onChange={(e) => onChange(e) }/>
                 <div className="register_form_placeholder" ref={nombreFarmaciaRef}>
                     <BiUser/>
-                    <label htmlFor="nombreFarmacia">Nombre Farmacia</label>
+                    <label htmlFor="nombreFarmacia">Nombre Institución</label>
                 </div>
                 <input type="text" className="register_form_input" name="nombreFarmacia" id="nombreFarmacia" onChange={(e) => onChange(e)} autoComplete="off"/>
                 <div className="register_form_placeholder" ref={razonSocialRef}>

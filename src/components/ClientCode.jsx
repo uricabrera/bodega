@@ -1,4 +1,4 @@
-import Logo from "./../media/logo.png";
+import Logo from "./../media/logo.jpg";
 import {useHistory,useParams} from "react-router-dom";
 import {useContext, useEffect, useRef, useState} from "react";
 import axios from "axios";
@@ -104,7 +104,7 @@ const ClientCode = () => {
                        onChange={(e) => onChange(e)}/>
                 <div className="register_form_placeholder" ref={nombreFarmaciaRef}>
                     <BiUser/>
-                    <label htmlFor="nombreFarmacia">Nombre Farmacia</label>
+                    <label htmlFor="nombreFarmacia">Nombre Institución</label>
                 </div>
                 <input type="text" className="register_form_input" name="nombreFarmacia" id="nombreFarmacia"
                        onChange={(e) => onChange(e)}/>

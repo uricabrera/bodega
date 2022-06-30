@@ -1,0 +1,38 @@
+.admin__body {
+
+  background-color: #636469;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  &__section {
+
+    margin-right: 20px;
+
+    &__title {
+      color: white;
+      text-align: center;
+    }
+
+    &__svg {
+      color: white;
+
+      & svg {
+        width: 230px;
+        height: 50px;
+      }
+    }
+  }
+}
+
+
+.admin__body__section:hover {
+  cursor: pointer;
+}
+
+.admin__body__section:hover h3 {
+  color: grey;
+}
+
+.admin__body__section:hover svg {
+  color: grey;
+}

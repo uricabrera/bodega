@@ -5,6 +5,7 @@ import Store from "./Store";
 import CartCheckout from "./CartCheckout";
 import AddProduct from "./AddProduct";
 import EditProduct from "./EditProduct";
+import Admin from "./Admin";
 
 
 const Dashboard = () => {
@@ -25,6 +26,9 @@ const Dashboard = () => {
                 </Route>
                 <Route path="/dashboard/editproduct/:id">
                     <EditProduct/>
+                </Route>
+                <Route path="/dashboard/admin">
+                    <Admin/>
                 </Route>
             </Switch>
             <div className="dashboard_div">
