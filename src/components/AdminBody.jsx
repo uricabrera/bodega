@@ -29,7 +29,7 @@ const AdminBody = () => {
             <Link to={"/dashboard/admin/providerusers"} style={{color: 'inherit', textDecoration: 'inherit'}}>
                 <div className="admin__body__section">
                     <h3 className="admin__body__section__title">
-                        Añadir y Quitar Rol Proveedor A Usuario
+                        Añadir/Quitar Rol Proveedor
                     </h3>
                     <div className="admin__body__section__svg">
                         <MdAddBusiness/>
@@ -39,7 +39,7 @@ const AdminBody = () => {
             <Link to={"/dashboard/admin/clientusers"} style={{color: 'inherit', textDecoration: 'inherit'}}>
                 <div className="admin__body__section">
                     <h3 className="admin__body__section__title">
-                        Añadir y Quitar Rol Cliente A Usuario
+                        Añadir/Quitar Rol Cliente
                     </h3>
                     <div className="admin__body__section__svg">
                         <FaHouseUser/>
@@ -49,7 +49,7 @@ const AdminBody = () => {
             <Link to={"/dashboard/admin/products"} style={{color: 'inherit', textDecoration: 'inherit'}}>
                 <div className="admin__body__section">
                     <h3 className="admin__body__section__title">
-                        Añadir, Editar y Quitar Producto
+                        Añadir/Editar/Quitar Producto
                     </h3>
                     <div className="admin__body__section__svg">
                         <FaProductHunt/>

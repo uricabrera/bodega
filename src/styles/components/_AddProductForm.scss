@@ -10,6 +10,11 @@
     text-align: center;
   }
 
+  &__productformchoice {
+    display: flex;
+    flex-direction: column;
+  }
+
 
   & div {
     display: flex;
