@@ -31,6 +31,12 @@ const ProductTable = ({input}) => {
     function traerItems(){
         console.log("Entre en la función!")
         let itemsArray;
+        // Hardcodeado de productos
+        itemsArray = [products.length, products];
+        setNumberPages(Number(itemsArray[0]));
+        setProductsToFetch(itemsArray[1]);
+        // Fin hardcodeado
+        /*
         var xmlhttp1 = new XMLHttpRequest();
         xmlhttp1.onreadystatechange = function() {
             if (xmlhttp1.readyState==4 && xmlhttp1.status==200) {
@@ -45,15 +51,17 @@ const ProductTable = ({input}) => {
         xmlhttp1.open('POST', '../php/buscar_items.php',true);
         xmlhttp1.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xmlhttp1.send(cadenaParametros);
+        */
         return itemsArray;
     }
 
 
     useEffect( () => {
-        const interval = setInterval(async () => {
-            await traerItems();
-        }, 3000);
-        return () => clearInterval(interval);
+        traerItems();
+       // const interval = setInterval(async () => {
+         //   await traerItems();
+       // }, 3000);
+       // return () => clearInterval(interval);
     },[input,pagination.selectedPage])
 
 

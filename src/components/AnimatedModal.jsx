@@ -4,8 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import coberturaPamiGrande from "./../media/cobertura-pami-mediano.png";
 import {GrClose} from "react-icons/gr";
+import {FaTrash} from "react-icons/fa";
+import {FaPlus} from "react-icons/fa";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 
@@ -24,17 +25,34 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function AnimatedModal({show,handleClose,imgUrl,nombreComercial,pami}) {
+export default function AnimatedModal({show,handleClose,cliente,numero_orden,proveedor,fecha_orden,detalle,cantidad,precio}) {
     const classes = useStyles();
 
-
     let history = useHistory();
-
 
     const [inputSubmit, setInputSubmit] = useState({
         
     })
 
+    const [edit, setEdit] = useState(0);
+
+    let [status_item, setStatusItem] = useState([
+    {dd:"1", d:"1", color:"#e1da13",status:"Solicitud de Presupuesto", created:"15/06/2022", entrega:"15/08/2022"},
+    {dd:"1", d:"1", color:"#e1da13",status: "Análisis de Factibilidad",created:"18/06/2022", entrega:"15/08/2022"},
+    {dd:"1", d:"1", color:"#e1da13",status: "Desarrollo Estructural",created:"18/06/2022", entrega:"15/08/2022"},
+    {dd:"1", d:"1", color:"#e1da13",status: "Prototipo Aprobado",created:"18/06/2022", entrega:"15/08/2022"},
+    {dd:"1", d:"1", color:"#fb801a",status: "Pedido de Cotización",created:"18/06/2022", entrega:"15/08/2022"},
+    {dd:"1", d:"1", color:"white",status: "Cotizado",created:"", entrega:""},
+    {dd:"1", d:"1", color:"white",status: "Orden Asignada",created:"", entrega:""},
+    {dd:"0", d:"0", color:"red",status: "Orden No Asignada",created:"", entrega:""},
+    {dd:"1", d:"1", color:"white",status: "Proceso de Aprobación de Diseño",created:"", entrega:""},
+    {dd:"1", d:"1", color:"white",status: "En Producción con pie de Máquina",created:"", entrega:""},
+    {dd:"1", d:"1", color:"white",status: "En Producción",created:"", entrega:""},
+    {dd:"1", d:"1", color:"white",status: "Entregado",created:"", entrega:""},
+    {dd:"1", d:"1", color:"white",status: "Cerrado",created:"", entrega:""}
+    ]);
+
+    const original_items = JSON.parse(JSON.stringify(status_item));
 
     const onChange = (e) => {
 
@@ -51,6 +69,34 @@ export default function AnimatedModal({show,handleClose,imgUrl,nombreComercial,p
         }
     }
 
+    function getIconStatus(i,index){
+        if(i==0){
+            return <FaPlus style={{display:display[edit]}} id={"icon"+index} className="icon_edit" onClick={onChangeItem}/>
+        } else {
+            return <FaTrash style={{display:display[edit]}} id={"icon"+index} className="icon_edit" onClick={onChangeItem}/>
+        }
+    }
+
+    const onChangeItem = (e) => {
+        let id_order = e.target.parentElement.id;
+        if (id_order ===""){
+          id_order = e.target.parentElement.id
+        }
+        id_order = id_order.substring(4);
+        let status_item_new = [];
+        status_item.forEach(function(i){
+            status_item_new.push(i)
+        });
+        if(status_item_new[id_order].dd==0){
+            status_item_new[id_order].dd=1;
+        } else{
+            status_item_new[id_order].dd=0;
+        }        
+        
+        setStatusItem(status_item_new);
+
+    }
+
     function actualizarItem(){
         var xmlhttp1 = new XMLHttpRequest();
         xmlhttp1.onreadystatechange = function() {
@@ -65,10 +111,38 @@ export default function AnimatedModal({show,handleClose,imgUrl,nombreComercial,p
         xmlhttp1.send(cadenaParametros);
     }
 
+    const onEdit = (e) => {
+        if (edit == 0){
+            setEdit(1);
+        } else {
+            setEdit(0);
+        }
+        let status_item_new = [];
+        status_item.forEach(function(i){
+            status_item_new.push(i)
+        });
+        status_item_new.forEach(function(i){
+            i.d = 1;
+        });
+        setStatusItem(status_item_new)
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
+        setEdit(0);
+        let status_item_new = [];
+        status_item.forEach(function(i){
+            status_item_new.push(i)
+        });
+        status_item_new.forEach(function(i){
+            if(i.dd==0){
+                i.d = 0;
+            }
+        });
+        setStatusItem(status_item_new);
         console.log(inputSubmit);
         //actualizarItem();
+        /*
         const formData = new FormData();
         formData.append("nombreComercial", inputSubmit["nombreComercial"]);
         formData.append("laboratorio", inputSubmit["laboratorio"]);
@@ -85,19 +159,40 @@ export default function AnimatedModal({show,handleClose,imgUrl,nombreComercial,p
             })
             .catch((err) => console.log("File Upload Error", err));
         history.push("/dashboard/store");
+        */
     }
 
     const onCancel = (e) => {
         e.preventDefault();
         history.push("/dashboard/store");
+        setEdit(0);
+        console.log("items originales");
+        console.log(original_items)
+        setStatusItem(original_items);
     }
 
+    
+    const display = ["none","inline-block"];
+    const display_inverse = ["inline-block","none"];
+    const backcolor=["rgb(220,220,220)","white"];
+    const border_input=["none","solid 1px"];
+    const status_items = status_item.map((item,index) =>
+        <div style={{backgroundColor:backcolor[item.dd]}}>
+            <div className="div_status" style={{display:display[item.d]}}>
+                <div className="radio_status" style={{backgroundColor:item.color}}></div>
+                <input style={{border:border_input[edit]}} className = "label_status pp_status_date" value={item.created} />
+                <label className = "label_status pp_status">{item.status}</label>
+                <label className = "label_status">Entrega estimada:{item.entrega}</label> 
+                {getIconStatus(item.dd, index)}                                      
+            </div>
+        </div>
+        )
     return (
         <>
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
-                className={classes.modal}
+                className="modal"
                 open={show}
                 onClose={handleClose}
                 closeAfterTransition
@@ -107,111 +202,37 @@ export default function AnimatedModal({show,handleClose,imgUrl,nombreComercial,p
                 }}
             >
                 <Fade in={show}>
-                    <div className={classes.paper} >
-                        <h2 style={{textAlign: "center"}}>{nombreComercial}</h2>
-                        <img src={imgUrl} alt="" width={300} height={300} />
-                        {pami === "1" && (<img src={coberturaPamiGrande} alt="Cobertura Pami Grande" className="modal_image_pami"/>)}
+                    <div className="paper" >
                         <GrClose className="modal_image_close" onClick={handleClose}/>
-                        <form className="editproductform">
-                            <label htmlFor="nombreComercial" className="editproductform__label">Cliente</label>
-                            <input type="text" id={"nombreComercial"} value={inputSubmit["nombreComercial"]} name={"nombreComercial"} className="editproductform__text" onChange={onChange}/>
-                            <label htmlFor="codigoInterno" className="editproductform__label">Código Interno</label>
-                            <input type="text" id={"codigoInterno"} value={inputSubmit["codigoInterno"]} name={"codigoInterno"} className="editproductform__text" onChange={onChange}/>
-                            <label htmlFor="descuentoLista" className="editproductform__label">Descuento Lista</label>
-                            <input type="text" id={"descuentoLista"} value={inputSubmit["descuentoLista"]} name={"descuentoLista"} className="editproductform__text" onChange={onChange}/>
-                            <label htmlFor="laboratorio" className="editproductform__label">Producto</label>
-                            <input type="text" id={"laboratorio"} value={inputSubmit["laboratorio"]} name={"laboratorio"} className="editproductform__text" onChange={onChange}/>
-                            <label htmlFor="proveedor" className="editproductform__label">Proveedor</label>
-                            <input type="text" id={"proveedor"} value={inputSubmit["proveedor"]} name={"proveedor"} className={"editproductform__text"} onChange={onChange}/>
-                            <label htmlFor="pami" className="editproductform__label">Cobertura Pami</label>
-                            <div id={"coberturaPami"}>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"nopami"} value={1} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="nopami">Solicitud De Presupuesto</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={2} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">Análisis De Factibilidad</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={3} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">Desarrollo Estructural</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={4} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">Prototipo Aprobado</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={5} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">Pedido De Cotización</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={6} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">Cotizado</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={7} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">Asignado y No Asignado</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={8} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">Proceso De Aprobación De Diseño</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={9} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">En Producción Con Pie De Máquina</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={10} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">En Producción</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={11} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">Entregado</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="coberturaPami" id={"conpami"} value={12} className="addproductform__radio"
-                                           onChange={onChange}/>
-                                    <label htmlFor="conpami">Cerrado</label>
-                                </div>
-                            </div>
-                            {
-                                /*
-
-                            <label htmlFor="stock" className={"editproductform__label"}>Stock</label>
-                            <div id={"stock"}>
-                                <input type="radio" name="stock" id={"constock"} value={1} defaultChecked={stock == "1" ? true : false} className="editproductform__radio" onChange={onChange}/>
-                                <FaCheck className="editproductform__label__constock"/>
-                                <input type="radio" name="stock" id={"commecistock"} value={0} defaultChecked={stock == "0" ? true : false} className="editproductform__radio" onChange={onChange}/>
-                                <FaCheck className="editproductform__label__commecistock"/>
-                                <input type="radio" name="stock" id={"nostock"} value={-1} defaultChecked={stock == "-1" ? true : false} className="editproductform__radio" onChange={onChange}/>
-                                <FaTimes className="editproductform__label__nostock"/>
-                            </div>
-
-
-                                 */
-                            }
-
-                            <label htmlFor="precio" className="editproductform__label">Precio</label>
-                            <input type="text" id={"price"} value={inputSubmit["precio"]} name={"precio"} className="editproductform__text" onChange={onChange}/>
-                            <label htmlFor="image" className="editproductform__label">Imagen</label>
-                            <input type="file" id="image" name="image" onChange={onChange}/>
+                        <div className="half_paper_left">
+                            <h2>Número de orden: {numero_orden}</h2>
+                            <p>Cliente: {cliente}</p>
+                            <p>Proveedor: {proveedor}</p>
+                            <p>Fecha colocación orden: {fecha_orden}</p>
+                            <p>Descripción:</p>
+                            <p className="pp_detalle">Cantidad: {cantidad}</p>
+                            <p className="pp_detalle">Detalle: {detalle}</p>
+                            <p className="pp_detalle">Precio: {precio}</p>
+                            <p className="pp_detalle">Total: $ {(cantidad * precio).toLocaleString()}</p>
+                            <p className="pp_detalle">Número de Plano: {detalle}</p>
+                            <p className="pp_detalle">Plano: {detalle}</p>
+                            <p className="pp_detalle">Aprobación de diseño: {detalle}</p>
+                            <p className="pp_detalle">Pie de Máquina: {detalle}</p>
+                            <p className="pp_detalle">Observaciones: {detalle}</p>
+                        </div>
+                        <div className="half_paper_right">
                             <div>
-                                <button className="searchbar_form_submit editproductform__cancel" onClick={onCancel}>Cancelar</button>
-                                <input type="submit" value={"Editar Producto"} className="editproductform__submit searchbar_form_submit" onClick={onSubmit}/>
+                                {status_items}
                             </div>
-                        </form>
+                            <div>
+                                <button style={{display: display_inverse[edit], float: "right"}} className="editproductform__submit searchbar_form_submit" onClick={onEdit}>Cambiar Estado</button>
+                            </div>
+                            <div style={{display:display[edit]}}>
+                                <button className="searchbar_form_submit editproductform__cancel" onClick={onCancel}>Cancelar</button>
+                                <input type="submit" value={"Confirmar"} className="editproductform__submit searchbar_form_submit" onClick={onSubmit}/>
+                            </div>
+                        </div>
+                            
                     </div>
                 </Fade>
             </Modal>

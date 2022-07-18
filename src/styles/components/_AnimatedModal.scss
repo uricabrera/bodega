@@ -1,6 +1,17 @@
 
 
 .modal {
+  background: white;
+  width: 98%;
+  margin-left: 1%;
+  height: 98vh;
+  min-height: 98vh;
+  margin-top: 1vh;
+  overflow-y: hidden;
+  border-radius: 10px;
+  border: none;
+  overflow-y: auto;
+
   &_image {
     &_pami {
       position: absolute;
@@ -10,8 +21,70 @@
     }
     &_close {
       position: absolute;
-      top: 5%;
+      top: 3%;
+      left: 95%;
       cursor: pointer;
     }
   }
+}
+
+.paper {
+  background: white;
+  padding: 50px 5%;
+  outline: none;
+}
+.half_paper_left{
+  width: 40%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.half_paper_right{
+  width: 58%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.pp_detalle{
+  margin: 5px 30px;
+}
+
+.pp_status{
+  width: 35%;
+}
+
+.pp_status_date{
+  width: 15%;
+  background:transparent;
+}
+
+.label_status{
+  display: inline-block;
+  margin: 0px 10px;
+}
+
+.radio_status{
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border:solid 1px $colorSecundario;
+  margin-left: -12px;
+}
+
+.div_status{
+  border-left: solid 4px $colorSecundario;
+  width: 100%;
+  padding: 8px 0px;
+  display: inline-block;
+}
+
+.icon_edit{
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 15px;
+  height: 15px;
+  color: rgb(80,80,80);
+  float: right;
 }

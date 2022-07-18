@@ -7,25 +7,28 @@ td[data-title="proveedor"]{
 }
 
 td[data-title="Descuento Público"],
-td[data-title="Su Descuento"],
+td[data-title="Estado"],
 td[data-title="Precio"],
 td[data-title="Precio Con Descuento"]{
   text-align: center !important;
 }
 
-
-
-
+td[data-title="Estado"]{
+  white-space: nowrap;
+}
 .product {
+  
+  cursor: pointer;
 
   &_image {
-    cursor: pointer;
-    transform: translateY(0.5px) translateX(-4px);
 
-    &_pami {
-      margin-left: 10px;
+    &_status {
       vertical-align: middle;
-      transform: translateY(-1.7px);
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      color: rgb(80,80,80);
+      float: right;
     }
 
     &_edit {
@@ -76,10 +79,12 @@ td[data-title="Precio Con Descuento"]{
     }
   }
 
-
 }
 
-
+.product:hover{
+  border-top: solid 3px $colorSecundario;
+  border-bottom: solid 3px $colorSecundario;
+}
 
 
 @media screen and (max-width: 770px){
@@ -131,7 +136,7 @@ td[data-title="Precio Con Descuento"]{
 
 
   td[data-title="Descuento Público"],
-  td[data-title="Su Descuento"],
+  td[data-title="Estado"],
   td[data-title="Precio"],
   td[data-title="Precio Con Descuento"]{
     text-align: end !important;

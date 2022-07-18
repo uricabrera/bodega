@@ -40,7 +40,7 @@ const CartCheckout = () => {
 
     return(
         <div className="cartcheckout cartcheckout__section">
-            <h1 className="cartcheckout__title">Solicitud De Cotización</h1>
+            <h2 className="cartcheckout__title" style={{fontWeight:100}}>Solicitud De Cotización</h2>
             <CartCheckoutTable/>
             <input className="cartcheckout__submit"  value={"Enviar Cotización"} type="submit" onClick={onSubmit}/>
         </div>

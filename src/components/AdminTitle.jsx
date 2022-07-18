@@ -3,8 +3,8 @@
 
 const AdminTitle = () => {
     return(
-        <div className="admin__title">
-            <h1 className="admin__title__text">Panel De Administración</h1>
+        <div>
+            <h2 className="cartcheckout__title" style={{fontWeight:100}}>Panel de Administración</h2>
         </div>
     )
 }

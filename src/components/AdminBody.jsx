@@ -9,51 +9,17 @@ const AdminBody = () => {
             <Link to={"/dashboard/admin/activateusers"} style={{color: 'inherit', textDecoration: 'inherit'}}>
                 <div className="admin__body__section">
                     <h3 className="admin__body__section__title">
-                        Activar Usuarios
+                        Usuarios
                     </h3>
-                    <div className="admin__body__section__svg">
-                        <AiOutlineUserAdd/>
-                    </div>
-                </div>
-            </Link>
-            <Link to={"/dashboard/admin/deactivateusers"} style={{color: 'inherit', textDecoration: 'inherit'}}>
-                <div className="admin__body__section">
-                    <h3 className="admin__body__section__title">
-                        Desactivar Usuarios
-                    </h3>
-                    <div className="admin__body__section__svg">
-                        <AiOutlineUserDelete/>
-                    </div>
+                    <AiOutlineUserAdd className="admin__body__section__logo"/>
                 </div>
             </Link>
             <Link to={"/dashboard/admin/providerusers"} style={{color: 'inherit', textDecoration: 'inherit'}}>
                 <div className="admin__body__section">
                     <h3 className="admin__body__section__title">
-                        Añadir/Quitar Rol Proveedor
+                        Roles
                     </h3>
-                    <div className="admin__body__section__svg">
-                        <MdAddBusiness/>
-                    </div>
-                </div>
-            </Link>
-            <Link to={"/dashboard/admin/clientusers"} style={{color: 'inherit', textDecoration: 'inherit'}}>
-                <div className="admin__body__section">
-                    <h3 className="admin__body__section__title">
-                        Añadir/Quitar Rol Cliente
-                    </h3>
-                    <div className="admin__body__section__svg">
-                        <FaHouseUser/>
-                    </div>
-                </div>
-            </Link>
-            <Link to={"/dashboard/admin/products"} style={{color: 'inherit', textDecoration: 'inherit'}}>
-                <div className="admin__body__section">
-                    <h3 className="admin__body__section__title">
-                        Añadir/Editar/Quitar Producto
-                    </h3>
-                    <div className="admin__body__section__svg">
-                        <FaProductHunt/>
-                    </div>
+                        <MdAddBusiness className="admin__body__section__logo"/>
                 </div>
             </Link>
         </div>

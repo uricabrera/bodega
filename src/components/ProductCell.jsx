@@ -2,22 +2,30 @@ import {useState,useContext} from "react";
 import HoverText from "./HoverText";
 import AnimatedModal from "./AnimatedModal";
 import {FaCheck,FaTimes} from "react-icons/fa";
-import {BsFillImageFill} from "react-icons/bs";
+import {FaFileInvoiceDollar} from "react-icons/fa";
+import {FaTools} from "react-icons/fa";
+import {FaRulerCombined} from "react-icons/fa";
+import {FaCommentDollar} from "react-icons/fa";
+import {FaDollarSign} from "react-icons/fa";
+import {FaCheckDouble} from "react-icons/fa";
+import {FaExclamationCircle} from "react-icons/fa";
+import {FaPaintBrush} from "react-icons/fa";
+import {FaMale} from "react-icons/fa";
+import {FaIndustry} from "react-icons/fa";
+import {FaTruck} from "react-icons/fa";
+import {FaRegWindowClose} from "react-icons/fa";
+import {FaCalendarCheck} from "react-icons/fa";
 import {AiFillEdit} from "react-icons/ai";
-import pamiCoberturaChico from "./../media/cobertura-pami-chiquito.png";
 import {CartContext} from "../contexts/CartContext";
 import { Link } from "react-router-dom";
 import {UserContext} from "../contexts/UserContext";
+import Icon from '@material-ui/core/Icon';
 
-const ProductCell = ({nombreComercial,laboratorio,proveedor,stock,precio,priceDiscount,dto,precioConDescuento,image,coberturaPami,id,descuentoLista}) => {
+const ProductCell = ({numero_orden, cliente,detalle,cantidad,precio,proveedor,fecha_orden,fecha_entrega,id,estado,estado_id,delay}) => {
 
     const [isHovering,setIsHovering] = useState(false);
 
     const {addProductToCart,cart} = useContext(CartContext);
-
-
-    console.log("Esto es un descuento!!!", descuentoLista);
-
 
     const {user} = useContext(UserContext);
 
@@ -33,86 +41,100 @@ const ProductCell = ({nombreComercial,laboratorio,proveedor,stock,precio,priceDi
         setIsHovering(false);
     };
 
-    const onChange = (event) => {
-        console.log(event.target.value);
-
-
-        // Sanitizing Input!
-
-        if(isNaN(event.target.value) || event.target.value === ""){
-            setInputQuantity(0);
-        }else{
-            setInputQuantity(0 + Number(event.target.value));
-        }
-
-        // Time to use CartContext!
-
-
-
-        addProductToCart({
-            nombreComercial,
-            laboratorio,
-            proveedor,
-            stock,
-            precio,
-            priceDiscount,
-            dto,
-            precioConDescuento,
-            image,
-            coberturaPami,
-            id,
-            descuentoLista
-        }, (0 + Number(event.target.value)))
-
-
-    }
 
     const item = cart.find((item) => item.id === id)
 
     const quantity = item ? item.quantity : null
 
+    function getIcon(platformId) {
+        console.log("Llega el id "+platformId)
+        switch (platformId) {
+            case 1:
+            return <FaFileInvoiceDollar className="product_image_status" style={{color:"#e1da13"}}/>
+            case 2:
+            return <FaTools className="product_image_status" style={{color:"#e1da13"}}/>
+            case 3:
+            return <FaRulerCombined className="product_image_status" style={{color:"#e1da13"}}/>
+            case 4:
+            return <FaCheck className="product_image_status" style={{color:"#e1da13"}}/>
+            case 5:
+            return <FaCommentDollar className="product_image_status" style={{color:"#fb801a"}}/>
+            case 6:
+            return <FaDollarSign className="product_image_status" style={{color:"#fb801a"}}/>
+            case 7:
+            return <FaCheckDouble className="product_image_status" style={{color:"#fb801a"}}/>
+            case 8:
+            return <FaExclamationCircle className="product_image_status" style={{color:"red"}}/>
+            case 9:
+            return <FaPaintBrush className="product_image_status" style={{color:"#fb801a"}}/>
+            case 10:
+            return <FaMale className="product_image_status" style={{color:"#74c329"}}/>
+            case 11:
+            return <FaIndustry className="product_image_status" style={{color:"#74c329"}}/>
+            case 12:
+            return <FaTruck className="product_image_status" style={{color:"#74c329"}}/>
+            case 13:
+            return <FaRegWindowClose className="product_image_status"/>
+            default:
+            return null
+            }
+        };
 
+    function getColor(delay) {
+        if(delay == 0){
+        }
+        if (delay === ""){
+            return "transparent";
+        }
+        if (delay <= 5) {
+            return "#74c329"
+        }
+
+        if (delay <= 10 && delay > 5) {
+            return "#e1da13";
+        }
+
+        if (delay > 10 ){
+            return "red";
+        } 
+        return null
+        };
 
     return(
         <>
-            <AnimatedModal show={show} handleClose={() => setShow(false)} imgUrl={image} nombreComercial={nombreComercial} pami={coberturaPami}/>
-            <tr className="product">
-                <td data-title="Cantidad">
-                    <div className="product_quantity">
-                        <input type="text" name="name" value={(quantity ? quantity : inputQuantity)} onChange={onChange}/>
-                    </div>
-                </td>
-                <th scope="row">
-                    <BsFillImageFill onClick={() => setShow(true)} className="product_image"/>
-                    <span>{nombreComercial}</span>
-                    {coberturaPami === "1" && (<img className="product_image_pami" src={pamiCoberturaChico} alt="Pami Cobertura Chico"/>)}
-                    {
+            <AnimatedModal show={show} handleClose={() => setShow(false)} 
+                cliente={cliente}
+                numero_orden={numero_orden}
+                proveedor={proveedor}
+                fecha_orden={fecha_orden}
+                detalle={detalle}
+                cantidad={cantidad}
+                precio={precio}
+            />
+            <tr className="product" onClick={() => setShow(true)}>
+                <td data-title="Cantidad">{numero_orden}</td>
+                {
+                <td data-title="Producto" className="product_proveedor">{cliente}
+                    
+                    {/*
                         user["admin"] === "1" ? (
                             <Link to={`/dashboard/editproduct/${id}`}>
                                 <AiFillEdit className="product_image_edit"/>
                             </Link>
                         ) : ""
-                    }
-                </th>
-                <td data-title="Producto" className="product_laboratorio">{laboratorio}</td>
-                <td data-title="proveedor" className="product_proveedor">{proveedor}</td>
-                {/*
-
-
-                <td data-title="Stock" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-
-                    {stock === -1 && (<div className="product_quantity_cancel">{isHovering && (<HoverText text={"El producto no tiene stock!"} stockState={"#EA3C53"}/>)} <FaTimes/>  </div>)}
-                    {stock === 0 && (<div className="product_quantity_pending">{isHovering && (<HoverText text={"El producto tendrá stock en poco tiempo!"} stockState={"#FFC30B"}/>)} <FaCheck/>   </div>)}
-                    {stock === 1 && (<div className="product_quantity_check">{isHovering && (<HoverText text={"El producto tiene stock!"} stockState={"green"}/>)} <FaCheck/> </div>)}
+                    */}
                 </td>
-
-
-
-                */}
-
-                <td data-title="Su Descuento" data-type="currency">{descuentoLista}</td>
-                <td data-title="Precio" data-type="currency">${precio}</td>
-                <td data-title="Precio Con Descuento" data-type="currency">${Number(descuentoLista) === 0 ?  precio : (((100 - Number(descuentoLista)) * Number(precio)) / 100)}</td>
+            }
+                <td data-title="Producto" className="product_laboratorio">{cantidad+" "+detalle}</td>
+                <td data-title="proveedor" className="product_proveedor">{proveedor}</td>
+                <td data-title="Estado" className="product_proveedor">
+                    {estado}
+                    {getIcon(estado_id)}
+                </td>
+                <td data-title="Precio" className="product_proveedor">
+                    {fecha_entrega}
+                    <FaCalendarCheck className="product_image_status" style={{color:getColor(delay)}}/>
+                </td>
             </tr>
         </>
     )

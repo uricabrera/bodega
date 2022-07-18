@@ -44,8 +44,8 @@ const Store = () => {
     return(
         <section className="store">
             <SearchBar onSubmit={onSubmit} onChange={onChange} onClick={onClick} input={input} />
-            <hr/>
             <Pagination/>
+            <hr/>
             <ProductTable input={input}/>
         </section>
     )
